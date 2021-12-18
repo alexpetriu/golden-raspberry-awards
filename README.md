@@ -10,6 +10,13 @@ Esse projeto tem o intuito de apresentação ao teste seletivo da Texo IT.
 
  - Executar o arquivo: ApiRestAplication como Java Aplication (Já irá subir automaticamente o Apache Tom Cat
  - Ou, Utilizar um servidor de aplicação de sua preferência
+ 
+**Acesso ao Banco de Dados**
+
+    Driver class: org.h2.Driver
+    JDBC URL: jdbc:h2:file:./data/goldenraspberryawards
+    User name: adam
+    Password: sandler
 
 **Chamada aos endpoints**
 - Após subir a aplicação, a interação com os endpoints pode ser feita através do link: http://localhost:8080/swagger-ui.html
