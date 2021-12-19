@@ -5,7 +5,7 @@ public class PathFileDTO {
 	private String pathFile;
 	
 	public PathFileDTO() {
-		
+		//default constructor
 	}
 	
 	public PathFileDTO(String pathFile) {

@@ -9,6 +9,10 @@ public class IntervalAwardsProducerDTO {
 	private Integer previousWin;
 	
 	private Integer followingWin;
+	
+	public IntervalAwardsProducerDTO() {
+		//default constructor
+	}
 
 	public String getProducer() {
 		return producer;

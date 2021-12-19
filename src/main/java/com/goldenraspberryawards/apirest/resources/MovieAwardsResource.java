@@ -1,7 +1,9 @@
 package com.goldenraspberryawards.apirest.resources;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,32 +44,50 @@ public class MovieAwardsResource {
 	}
 	
 	
-	@ApiOperation(value="Importa um arquivo csv via path. O arquivo deve ter os seguintes campos na ordem: year, title, studios, producers, winner")
+	@ApiOperation(value="Importa um arquivo csv via path. Local dos arquivos: 'src/main/resources/csv-files' O arquivo deve ter os seguintes campos na ordem: year, title, studios, producers, winner")
 	@PostMapping("importar-arquivo-path")
-	public ResponseEntity<String> importNomineesByPath(@RequestBody PathFileDTO path) {
+	public ResponseEntity<Map<String, String>> importNomineesByPath(@RequestBody PathFileDTO path) {
+		
+		Map<String, String> result = new HashMap<>();
 		
 		try {
 			movieAwardsService.importNomineesByPath(path.getPathFile());
 			
-			return new ResponseEntity<String>("Importado com sucesso", HttpStatus.OK);
+			result.put("status", "OK");
+			result.put("message", "Importado com sucesso");
+			
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
 			
 		} catch (Exception ex) {
-			return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+			
+			result.put("status", "Error");
+			result.put("message", ex.getMessage());
+			
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	
 	@ApiOperation(value="Importa um arquivo csv via file. O arquivo deve ter os seguintes campos na ordem: year, title, studios, producers, winner")
 	@PostMapping("importar-arquivo-file")
-	public ResponseEntity<String> importNomineesByFile(@RequestParam("file") MultipartFile file) throws IOException {
+	public ResponseEntity<Map<String, String>> importNomineesByFile(@RequestParam("file") MultipartFile file) {
+		
+		Map<String, String> result = new HashMap<>();
+		
 		try {
 			
 			movieAwardsService.importNomineesByFile(file);
 			
-			return new ResponseEntity<String>("Importado com sucesso", HttpStatus.OK);
+			result.put("status", "OK");
+			result.put("message", "Importado com sucesso");
+			
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
 			
 		} catch (Exception ex) {
-			return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+			result.put("status", "Error");
+			result.put("message", ex.getMessage());
+			
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

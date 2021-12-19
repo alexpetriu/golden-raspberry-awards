@@ -8,6 +8,9 @@ public class IntervalAwardsDTO {
 	
 	private List<IntervalAwardsProducerDTO> max;
 	
+	public IntervalAwardsDTO() {
+		//default constructor
+	}
 
 	public List<IntervalAwardsProducerDTO> getMin() {
 		return min;
