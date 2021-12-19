@@ -13,6 +13,8 @@ Esse projeto tem o intuito de apresentação ao teste seletivo da Texo IT.
  
 **Acesso ao Banco de Dados**
 
+    http://localhost:8080/h2-console/
+
     Driver class: org.h2.Driver
     JDBC URL: jdbc:h2:file:./data/goldenraspberryawards
     User name: adam
