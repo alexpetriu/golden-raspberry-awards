@@ -13,6 +13,10 @@ public class NomineesAwardsDTO {
 	private Integer year;
 	
 	private boolean winner;
+	
+	public NomineesAwardsDTO() {
+		//default constructor
+	}
 
 	public Long getId() {
 		return id;
