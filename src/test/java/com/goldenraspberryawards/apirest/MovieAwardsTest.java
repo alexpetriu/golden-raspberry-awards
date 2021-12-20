@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.goldenraspberryawards.apirest.constants.ConstantsURL;
 import com.goldenraspberryawards.apirest.dto.PathFileDTO;
 import com.goldenraspberryawards.apirest.resources.MovieAwardsResource;
 
@@ -42,12 +43,11 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         
         String json = mapper.writeValueAsString(pathFileDto);
         
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/importar-arquivo-path")
+        
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
-        
     }
 	
 	@Test
@@ -60,12 +60,11 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         ObjectMapper mapper = new ObjectMapper();
         
         String json = mapper.writeValueAsString(pathFileDto);
-        
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/importar-arquivo-path")
+
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
-
         
     }
 	
@@ -79,13 +78,10 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 	    File file = new File(path);
 	    FileInputStream input = new FileInputStream(file);
 	    MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
-		
-        
-        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/importar-arquivo-file")
+	    
+	    this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
-        
     }
 	
 	@Test
@@ -99,24 +95,20 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 	    FileInputStream input = new FileInputStream(file);
 	    MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
 		
-        
-        this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/importar-arquivo-file")
+	    
+	    this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
-
-        
     }
 	
 	@Test
     public void getMinMaxIntervalAwards_ReturnStatus200() throws Exception {
 		
 		setUp();
-	   
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/intervalo-premios")
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_INTERVAL_WINS)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
-        
     }
 	
 	@Test
@@ -125,12 +117,10 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String year = "1980";
-	   
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vencedores/"+year)
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_WINNERS + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
-        
     }
 	
 	@Test
@@ -139,12 +129,10 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String year = "no-number";
-	   
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/nomeacoes/"+year)
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_NOMINEES + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
-
-        
     }
 	
 	@Test
@@ -153,11 +141,10 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String year = "1980";
-	   
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/nomeacoes/"+year)
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_NOMINEES + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
         
     }
 	
@@ -167,12 +154,11 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String year = "no-number";
-	   
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/vencedores/"+year)
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_WINNERS + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
 
-        
     }
 
 }

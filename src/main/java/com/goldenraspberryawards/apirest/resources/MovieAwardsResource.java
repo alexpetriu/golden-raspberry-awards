@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.goldenraspberryawards.apirest.constants.ConstantsURL;
 import com.goldenraspberryawards.apirest.dto.IntervalAwardsDTO;
 import com.goldenraspberryawards.apirest.dto.NomineesAwardsDTO;
 import com.goldenraspberryawards.apirest.dto.PathFileDTO;
@@ -28,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/")
 @Api(value="API Rest Golden Raspeberry Awards")
 public class MovieAwardsResource {
 	
@@ -38,14 +39,14 @@ public class MovieAwardsResource {
 	
 	
 	@ApiOperation(value="Retorna o intervalo min e max de vencedores")
-	@GetMapping("/intervalo-premios")
+	@GetMapping(ConstantsURL.URL_INTERVAL_WINS)
 	public IntervalAwardsDTO getMinMaxIntervalAwards(){
 		return movieAwardsService.getListIntervalAwards();
 	}
 	
 	
 	@ApiOperation(value="Importa um arquivo csv via path. Local dos arquivos: 'src/main/resources/csv-files' O arquivo deve ter os seguintes campos na ordem: year, title, studios, producers, winner")
-	@PostMapping("importar-arquivo-path")
+	@PostMapping(ConstantsURL.URL_IMPORT_PATH)
 	public ResponseEntity<Map<String, String>> importNomineesByPath(@RequestBody PathFileDTO path) {
 		
 		Map<String, String> result = new HashMap<>();
@@ -69,7 +70,7 @@ public class MovieAwardsResource {
 	
 	
 	@ApiOperation(value="Importa um arquivo csv via file. O arquivo deve ter os seguintes campos na ordem: year, title, studios, producers, winner")
-	@PostMapping("importar-arquivo-file")
+	@PostMapping(ConstantsURL.URL_IMPORT_FILE)
 	public ResponseEntity<Map<String, String>> importNomineesByFile(@RequestParam("file") MultipartFile file) {
 		
 		Map<String, String> result = new HashMap<>();
@@ -92,19 +93,19 @@ public class MovieAwardsResource {
 	}
 	
 	@ApiOperation(value="Lista todos os vencedores")
-	@GetMapping("/vencedores")
+	@GetMapping(ConstantsURL.URL_WINNERS)
 	public List<NomineesAwardsDTO> getWinners(){
 		return movieAwardsService.listAllWinners();
 	}
 	
 	@ApiOperation(value="Lista os vencedores de um ano")
-	@GetMapping("/vencedores/{year}")
+	@GetMapping(ConstantsURL.URL_WINNERS + "/{year}")
 	public List<NomineesAwardsDTO> getWinnersByYear(@PathVariable(value="year") Integer year){
 		return movieAwardsService.findWinnersByYear(year);
 	}
 	
 	@ApiOperation(value="Lista as nomeações de um ano")
-	@GetMapping("/nomeacoes/{year}")
+	@GetMapping(ConstantsURL.URL_NOMINEES + "/{year}")
 	public List<NomineesAwardsDTO> getNomineesByYear(@PathVariable(value="year") Integer year){
 		return movieAwardsService.listNomineesByYear(year);
 	}
