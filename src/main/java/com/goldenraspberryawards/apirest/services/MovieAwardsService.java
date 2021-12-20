@@ -67,8 +67,10 @@ public class MovieAwardsService {
 	    
 		InputStream is = file.getInputStream();
 		br = new BufferedReader(new InputStreamReader(is));
-	    while ((line = br.readLine()) != null) {
-	    	String[] split = line.split(";");
+		
+		while ((line = br.readLine()) != null) {
+	    	
+			String[] split = line.split(";");
 	    	
 	    	if (split.length < 5) {
 	    		
@@ -77,8 +79,9 @@ public class MovieAwardsService {
 	    		String v2 = split[2];
 	    		String v3 = split[3];
 	    		String v4 = "";
-	    		String[] split2 = {v0, v1, v3, v3, v4};
+	    		String[] split2 = {v0, v1, v2, v3, v4};
 	    		lines.add(split2);
+	    		
 	    	} else {
 	    		lines.add(split);
 	    	}
@@ -92,13 +95,13 @@ public class MovieAwardsService {
 	
 	public void importNominees(List<String[]> lines) throws Exception {
 
-        ValidationFileCsv validation = new ValidationFileCsv();
-        
-        lines = validation.validateData(lines);
-        
-        nomineesAwardsRepository.deleteAll();
-        
-        for (String[] line : lines) {
+		ValidationFileCsv validation = new ValidationFileCsv();
+		
+		lines = validation.validateData(lines);
+		
+		nomineesAwardsRepository.deleteAll();
+		
+		for (String[] line : lines) {
         	
         	Integer year = Integer.valueOf(line[0]);
         	String title = line[1];
@@ -109,7 +112,9 @@ public class MovieAwardsService {
         	NomineesAwards nominees = new NomineesAwards(title, studios, producers, year, winner);
         	
         	nominees = nomineesAwardsRepository.save(nominees);
-        }
+        
+		}
+		
 	}
 	
 	/*
