@@ -2344,3 +2344,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/operad
 2021-12-20 08:58:24 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SB_NOMINEES_AWARDS" not found; SQL statement:
 select * from sb_nominees_awards [42102-200]
+2021-12-20 10:29:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_NOMINEES" not found; SQL statement:
+select * from tb_nominees where winner = true [42102-200]

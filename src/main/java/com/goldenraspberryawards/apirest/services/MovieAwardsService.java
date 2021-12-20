@@ -109,10 +109,17 @@ public class MovieAwardsService {
         	String producers = line[3];
         	boolean winner = (line[4]).toLowerCase().equals("yes");
         	
-        	NomineesAwards nominees = new NomineesAwards(title, studios, producers, year, winner);
+        	String[] split1 = producers.split(", ");
         	
-        	nominees = nomineesAwardsRepository.save(nominees);
-        
+        	for (String prd1 : split1) {
+        		
+        		String[] split2 = prd1.split(" and ");
+        		
+        		for (String prd2 : split2) {
+        			NomineesAwards nominees = new NomineesAwards(title, studios, prd2, year, winner);
+        			nominees = nomineesAwardsRepository.save(nominees);
+        		}
+        	}
 		}
 		
 	}
