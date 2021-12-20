@@ -45,9 +45,8 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-		
-        
-    }
+	
+	}
 	
 	@Test
 	public void importFilePath_ReturnStatus400() throws Exception {
@@ -64,8 +63,8 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
-        
-    }
+    
+	}
 	
 	@Test
 	public void importFileUpload_ReturnStatus200() throws Exception {
@@ -83,8 +82,8 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-
-    }
+	
+	}
 	
 	@Test
 	public void importFileUpload_ReturnStatus400() throws Exception {
@@ -104,8 +103,9 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
 
 		input.close();
-		
-    }
+	
+	}
+    
 	
 	@Test
 	public void getMinMaxIntervalAwards_ReturnStatus200() throws Exception {
@@ -115,8 +115,9 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_INTERVAL_WINS)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-		
-    }
+	
+	}
+    
 	
 	@Test
 	public void getWinnersByYear_ReturnStatus200() throws Exception {
@@ -128,8 +129,9 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_WINNERS + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-		
-    }
+	
+	}
+    
 	
 	@Test
 	public void getNomineesByYear_ReturnStatus400() throws Exception {
@@ -154,8 +156,9 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_NOMINEES + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-		
-    }
+	
+	}
+    
 	
 	@Test
 	public void getWinnersByYear_ReturnStatus400() throws Exception {
@@ -168,6 +171,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
 
-    }
+	}
+    
 
 }
