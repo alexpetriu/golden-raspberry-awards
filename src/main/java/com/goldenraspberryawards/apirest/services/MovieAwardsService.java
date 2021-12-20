@@ -42,11 +42,11 @@ public class MovieAwardsService {
 	 */
 	public void importNomineesByPath(String path) throws Exception {
 		Reader reader = Files.newBufferedReader(Paths.get(path));
-        CSVReader csvReader = new CSVReader(reader, ';');
+		CSVReader csvReader = new CSVReader(reader, ';');
         
-        List<String[]> lines = csvReader.readAll();
+		List<String[]> lines = csvReader.readAll();
         
-        reader.close();
+		reader.close();
 		
 		
 		importNominees(lines);
@@ -64,8 +64,9 @@ public class MovieAwardsService {
 		List<String[]> lines = new ArrayList<>();
 		
 		String line;
-	    InputStream is = file.getInputStream();
-	    br = new BufferedReader(new InputStreamReader(is));
+	    
+		InputStream is = file.getInputStream();
+		br = new BufferedReader(new InputStreamReader(is));
 	    while ((line = br.readLine()) != null) {
 	    	String[] split = line.split(";");
 	    	

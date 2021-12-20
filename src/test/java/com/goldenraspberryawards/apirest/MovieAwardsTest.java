@@ -33,7 +33,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 	}
 	
 	@Test
-    public void importFilePath_ReturnStatus200() throws Exception {
+	public void importFilePath_ReturnStatus200() throws Exception {
 		
 		setUp();
 
@@ -51,7 +51,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void importFilePath_ReturnStatus400() throws Exception {
+	public void importFilePath_ReturnStatus400() throws Exception {
 		
 		setUp();
 		
@@ -69,7 +69,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void importFileUpload_ReturnStatus200() throws Exception {	
+	public void importFileUpload_ReturnStatus200() throws Exception {
 		
 		setUp();
 		
@@ -85,7 +85,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void importFileUpload_ReturnStatus400() throws Exception {	
+	public void importFileUpload_ReturnStatus400() throws Exception {
 		
 		setUp();
 		
@@ -102,7 +102,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void getMinMaxIntervalAwards_ReturnStatus200() throws Exception {
+	public void getMinMaxIntervalAwards_ReturnStatus200() throws Exception {
 		
 		setUp();
 		
@@ -112,7 +112,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void getWinnersByYear_ReturnStatus200() throws Exception {
+	public void getWinnersByYear_ReturnStatus200() throws Exception {
 		
 		setUp();
 		
@@ -124,7 +124,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void getNomineesByYear_ReturnStatus400() throws Exception {
+	public void getNomineesByYear_ReturnStatus400() throws Exception {
 		
 		setUp();
 		
@@ -136,7 +136,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void getNomineesByYear_ReturnStatus200() throws Exception {
+	public void getNomineesByYear_ReturnStatus200() throws Exception {
 		
 		setUp();
 		
@@ -149,7 +149,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
     }
 	
 	@Test
-    public void getWinnersByYear_ReturnStatus400() throws Exception {
+	public void getWinnersByYear_ReturnStatus400() throws Exception {
 		
 		setUp();
 		
