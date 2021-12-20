@@ -1,6 +1,7 @@
 # Bem vindo ao Golden Raspberry Awards
 
 Esse projeto tem o intuito de apresentação ao teste seletivo da Texo IT.
+- Java: JDK 1.8
 - O projeto foi feito utilizando Spring boot versão 2.5.7
 - A IDE de trabalho utilizada foi o Eclipse IDE for Enterprise Java and Web Developers
 - O Banco de dados utilizado é o H2 Database
