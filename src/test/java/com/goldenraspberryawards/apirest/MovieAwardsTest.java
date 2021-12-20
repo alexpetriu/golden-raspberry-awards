@@ -36,18 +36,17 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 	public void importFilePath_ReturnStatus200() throws Exception {
 		
 		setUp();
-
-        PathFileDTO pathFileDto = new PathFileDTO("src/main/resources/csv-files/movielist1.csv");
-        
-        ObjectMapper mapper = new ObjectMapper();
-        
-        String json = mapper.writeValueAsString(pathFileDto);
-        
-        
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
+		
+		PathFileDTO pathFileDto = new PathFileDTO("src/main/resources/csv-files/movielist1.csv");
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(pathFileDto);
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isOk());
+		
+        
     }
 	
 	@Test
@@ -55,13 +54,13 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		
 		setUp();
 		
-        PathFileDTO pathFileDto = new PathFileDTO("src/main/resources/csv-files/movielist_invalid_1.csv");
-        
-        ObjectMapper mapper = new ObjectMapper();
-        
-        String json = mapper.writeValueAsString(pathFileDto);
-
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
+		PathFileDTO pathFileDto = new PathFileDTO("src/main/resources/csv-files/movielist_invalid_1.csv");
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		String json = mapper.writeValueAsString(pathFileDto);
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -74,14 +73,17 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String path = "src/main/resources/csv-files/movielist1.csv";
-
-	    File file = new File(path);
-	    FileInputStream input = new FileInputStream(file);
-	    MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
-	    
-	    this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
+		
+		File file = new File(path);
+		
+		FileInputStream input = new FileInputStream(file);
+		
+		MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
         		).andExpect(MockMvcResultMatchers.status().isOk());
+
     }
 	
 	@Test
@@ -90,15 +92,19 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		setUp();
 		
 		String path = "src/main/resources/csv-files/movielist_invalid_1.csv";
-
-	    File file = new File(path);
-	    FileInputStream input = new FileInputStream(file);
-	    MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
 		
-	    
-	    this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
+		File file = new File(path);
+		
+		FileInputStream input = new FileInputStream(file);
+		
+		MockMultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", input.readAllBytes());
+		
+		this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
+
+		input.close();
+		
     }
 	
 	@Test
@@ -109,6 +115,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_INTERVAL_WINS)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
+		
     }
 	
 	@Test
@@ -121,6 +128,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_WINNERS + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
+		
     }
 	
 	@Test
@@ -133,6 +141,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_NOMINEES + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isBadRequest());
+		
     }
 	
 	@Test
@@ -145,7 +154,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/api/" + ConstantsURL.URL_NOMINEES + "/"+ year)
         		.contentType(MediaType.APPLICATION_JSON)
         		).andExpect(MockMvcResultMatchers.status().isOk());
-        
+		
     }
 	
 	@Test
