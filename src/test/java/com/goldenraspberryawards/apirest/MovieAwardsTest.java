@@ -44,7 +44,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		this.mockMvc.perform(MockMvcRequestBuilders.post("/api/" + ConstantsURL.URL_IMPORT_PATH)
         		.contentType(MediaType.APPLICATION_JSON)
         		.content(json)
-        		).andExpect(MockMvcResultMatchers.status().isOk());
+        		).andExpect(MockMvcResultMatchers.status().isCreated());
 	
 	}
 	
@@ -81,7 +81,7 @@ public class MovieAwardsTest extends ApirestApplicationTests {
 		
 		this.mockMvc.perform(MockMvcRequestBuilders.multipart("/api/" + ConstantsURL.URL_IMPORT_FILE)
         		.file(multipartFile)
-        		).andExpect(MockMvcResultMatchers.status().isOk());
+        		).andExpect(MockMvcResultMatchers.status().isCreated());
 	
 	}
 	

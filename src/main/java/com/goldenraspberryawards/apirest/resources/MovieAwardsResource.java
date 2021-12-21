@@ -57,7 +57,7 @@ public class MovieAwardsResource {
 			result.put("status", "OK");
 			result.put("message", "Importado com sucesso");
 			
-			return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.CREATED);
 			
 		} catch (Exception ex) {
 			
@@ -82,7 +82,7 @@ public class MovieAwardsResource {
 			result.put("status", "OK");
 			result.put("message", "Importado com sucesso");
 			
-			return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
+			return new ResponseEntity<Map<String, String>>(result, HttpStatus.CREATED);
 			
 		} catch (Exception ex) {
 			result.put("status", "Error");
